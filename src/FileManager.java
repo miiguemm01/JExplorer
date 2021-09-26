@@ -60,6 +60,21 @@ public class FileManager {
         
     }
 
+    public boolean createFile(File file){
+        boolean success = false;
+        if(!file.exists()){
+            try {
+                file.createNewFile();
+                success = true;
+            } catch (IOException e) {
+                success = false;
+                e.printStackTrace();
+            }
+        }
+
+        return success;
+    }
+
     public void fileRead(File file){
         int lineCounter = 1;
         if(file.canRead()){
