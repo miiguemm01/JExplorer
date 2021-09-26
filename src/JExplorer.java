@@ -22,17 +22,26 @@ public class JExplorer{
             }else if(readedString.equals("+")){
                 //fileURI no cambia
             }else if(readedString.equals("+f")){
-                System.out.println("Write the name of the file to create: ");
+                System.out.println("Write the name of the file to create");
                 String newFileName = kboard.readKeyboard();
                 newFileName = fileURI + newFileName;
                 File newFile = new File(newFileName);
                 if(fileManager.createFile(newFile)){
                     System.out.println("Success creating the file");
                 }else{
-                    System.out.println("Cannot create file");
+                    System.out.println("Cannot create the file");
                 }
-            }
-            else{
+            }else if(readedString.equals(("-f"))){
+                System.out.println("Write the name of the file to delete");
+                String remFileName = kboard.readKeyboard();
+                remFileName = fileURI + remFileName;
+                File remFile = new File(remFileName);
+                if(fileManager.removeFile(remFile)){
+                    System.out.println("Success deleting the file");
+                }else{
+                    System.out.println("Cannot delete the file");
+                }
+            }else{
                 fileURI += readedString + "/";
             }
             if(!readedString.equals("!")){
@@ -50,6 +59,7 @@ public class JExplorer{
                 System.out.println("Type '..' to go back to parent folder");
                 System.out.println("Type '+' to list current folder files");
                 System.out.println("Type '+f' to create a file");
+                System.out.println("Type '-f' to delete a file");
                 System.out.println("Type '!' to exit");
                 readedString = kboard.readKeyboard();
             }else{

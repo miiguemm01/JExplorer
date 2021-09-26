@@ -67,11 +67,19 @@ public class FileManager {
                 file.createNewFile();
                 success = true;
             } catch (IOException e) {
-                success = false;
-                e.printStackTrace();
+                //Cannot create file
             }
         }
 
+        return success;
+    }
+
+    public boolean removeFile(File file){
+        boolean success = false;
+        if(file.exists()){
+            file.delete();
+            success = true;
+        }
         return success;
     }
 
