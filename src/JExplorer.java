@@ -7,7 +7,6 @@ public class JExplorer{
         FileManager fileManager = new FileManager();
         boolean execution = true;
         File file = new File(fileURI);
-        //if(fileURI.equals("!")) execution = false;
         String readedString = "";
         String[] URICompose;
         while(execution){

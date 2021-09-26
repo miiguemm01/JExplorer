@@ -16,7 +16,7 @@ public class FileManager {
         }
     }
 
-    public void directoryRead(File file){ //VER SI FILE EXISTE
+    public void directoryRead(File file){
         File[] content = file.listFiles();
         List<File> contentFiles = new ArrayList<File>();
         List<File> contentDirs = new ArrayList<File>();
