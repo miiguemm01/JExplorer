@@ -83,6 +83,26 @@ public class FileManager {
         return success;
     }
 
+    public void copyFile(File origin, File dest){
+        if(!origin.isDirectory() && !dest.isDirectory()){
+            try {
+                BufferedReader fileReader = new BufferedReader(new FileReader(origin));
+                FileWriter fileWriter = new FileWriter(dest);
+                String line = fileReader.readLine();
+                while(line != null){
+                    fileWriter.write(line + "\n");
+                    line = fileReader.readLine();
+                }
+                fileWriter.close();
+                fileReader.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("File does not exist");
+            } catch (IOException e) {
+                //NOTHING TO DO
+            }
+        }
+    }
+
     public void fileRead(File file){
         int lineCounter = 1;
         if(file.canRead()){

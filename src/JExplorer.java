@@ -40,6 +40,16 @@ public class JExplorer{
                 }else{
                     System.out.println("Cannot delete the file");
                 }
+            }else if(readedString.equals("cf")){
+                System.out.println("Write the origin file");
+                String origin = kboard.readKeyboard();
+                origin = fileURI + origin;
+                File originFile = new File(origin);
+                System.out.println("Write the destination file");
+                String dest = kboard.readKeyboard();
+                dest = fileURI + dest;
+                File destFile = new File(dest);
+                fileManager.copyFile(originFile, destFile);
             }else{
                 fileURI += readedString + "/";
             }
@@ -59,6 +69,7 @@ public class JExplorer{
                 System.out.println("Type '+' to list current folder files");
                 System.out.println("Type '+f' to create a file");
                 System.out.println("Type '-f' to delete a file");
+                System.out.println("Type 'cf' to copy file content to another file");
                 System.out.println("Type '!' to exit");
                 readedString = kboard.readKeyboard();
             }else{
