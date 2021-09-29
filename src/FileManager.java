@@ -103,6 +103,26 @@ public class FileManager {
         }
     }
 
+    public void copyFileUnbuffered(File origin, File dest){
+        if(!origin.isDirectory() && !dest.isDirectory()){
+            try{
+                FileReader fileReader = new FileReader(origin);
+                FileWriter fileWriter = new FileWriter(dest);
+                int asciiChar = fileReader.read();
+                while(asciiChar != -1){
+                    fileWriter.write(asciiChar);
+                    asciiChar = fileReader.read();
+                }
+                fileWriter.close();
+                fileReader.close();
+            }catch(FileNotFoundException e){
+                System.out.println("This file does not exist");
+            }catch(IOException e){
+                //NOTHING TO DO
+            }
+        }
+    }
+
     public void fileRead(File file){
         int lineCounter = 1;
         if(file.canRead()){

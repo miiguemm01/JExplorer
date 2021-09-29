@@ -49,7 +49,7 @@ public class JExplorer{
                 String dest = kboard.readKeyboard();
                 dest = fileURI + dest;
                 File destFile = new File(dest);
-                fileManager.copyFile(originFile, destFile);
+                fileManager.copyFileUnbuffered(originFile, destFile);
             }else{
                 fileURI += readedString + "/";
             }
