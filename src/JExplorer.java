@@ -49,7 +49,7 @@ public class JExplorer{
                 String dest = kboard.readKeyboard();
                 dest = fileURI + dest;
                 File destFile = new File(dest);
-                fileManager.copyFileUnbuffered(originFile, destFile);
+                fileManager.copyFile(originFile, destFile);
             }else if(readedString.equals("*e")){
                 System.out.println("Write the key");
                 int key = kboard.readInt();
