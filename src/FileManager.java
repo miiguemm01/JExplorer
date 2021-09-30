@@ -123,6 +123,38 @@ public class FileManager {
         }
     }
 
+    public void encryptFile(File file, File dest, int key){ //WIP
+        try{
+            FileReader fileReader = new FileReader(file);
+            FileWriter fileWriter = new FileWriter(dest);
+            int asciiChar = fileReader.read();
+            while(asciiChar != -1){
+                asciiChar += key;
+                fileWriter.write(asciiChar);
+            }
+            fileReader.close();
+            fileWriter.close();
+        }catch(Exception e){
+        }
+    }
+
+    public void decryptFile(File file, File dest, int key){ //WIP
+        try{
+            FileReader fileReader = new FileReader(file);
+            FileWriter fileWriter = new FileWriter(dest);
+            int asciiChar = fileReader.read();
+            while(asciiChar != -1){
+                asciiChar -= key;
+                fileWriter.write(asciiChar);
+            }
+            fileReader.close();
+            fileWriter.close();
+        }catch(Exception e){
+            //NADA
+        }
+    }
+
+
     public void fileRead(File file){
         int lineCounter = 1;
         if(file.canRead()){

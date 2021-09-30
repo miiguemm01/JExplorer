@@ -50,6 +50,26 @@ public class JExplorer{
                 dest = fileURI + dest;
                 File destFile = new File(dest);
                 fileManager.copyFileUnbuffered(originFile, destFile);
+            }else if(readedString.equals("*e")){
+                System.out.println("Write the key");
+                int key = kboard.readInt();
+                System.out.println("Write the file to encrypt");
+                String fileString = kboard.readKeyboard();
+                System.out.println("Write the destination file");
+                String destString = kboard.readKeyboard();
+                File encFile = new File(fileURI + fileString);
+                File dest = new File(fileURI + destString);
+                fileManager.encryptFile(encFile, dest, key);
+            }else if(readedString.equals("*d")){
+                System.out.println("Write the key");
+                int key = kboard.readInt();
+                System.out.println("Write the file to decrypt");
+                String fileString = kboard.readKeyboard();
+                System.out.println("Write the destination file");
+                String fileDest = kboard.readKeyboard();
+                File encFile = new File(fileURI + fileString);
+                File dest = new File(fileURI + fileDest);
+                fileManager.decryptFile(encFile, dest, key);
             }else{
                 fileURI += readedString + "/";
             }
@@ -70,6 +90,8 @@ public class JExplorer{
                 System.out.println("Type '+f' to create a file");
                 System.out.println("Type '-f' to delete a file");
                 System.out.println("Type 'cf' to copy file content to another file");
+                System.out.println("Type '*e' to encrypt a file (WIP)");
+                System.out.println("Type '*d' to decrypt a file (WIP)");
                 System.out.println("Type '!' to exit");
                 readedString = kboard.readKeyboard();
             }else{
